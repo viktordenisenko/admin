@@ -12,26 +12,46 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductCreateComponent } from './components/product-create/product-create.component';
 import { ProductUpdateComponent } from './components/product-update/product-update.component';
+import { CategoriesComponent } from './components/categories/categories.component';
+import { CategoriesUpdateComponent } from './components/categories-update/categories-update.component';
+import { CategoriesCreateComponent } from './components/categories-create/categories-create.component';
 
 const routes = [
   {
-    path: "",
+    path: '',
     component: DashboardComponent
   },
   {
-    path: "products",
+    path: 'products',
     children: [
       {
-        path: "",
+        path: '',
         component: ProductsComponent
       },
       {
-        path: "create",
+        path: 'create',
         component: ProductCreateComponent
       },
       {
-        path: "update/:productId",
+        path: 'update/:productId',
         component: ProductUpdateComponent
+      }
+    ]
+  },
+  {
+    path: 'categories',
+    children: [
+      {
+        path: '',
+        component: CategoriesComponent
+      },
+      {
+        path: 'create',
+        component: CategoriesCreateComponent
+      },
+      {
+        path: 'update/:categoryId',
+        component: CategoriesUpdateComponent
       }
     ]
   }
@@ -44,7 +64,10 @@ const routes = [
     DashboardComponent,
     ProductsComponent,
     ProductCreateComponent,
-    ProductUpdateComponent
+    ProductUpdateComponent,
+    CategoriesComponent,
+    CategoriesUpdateComponent,
+    CategoriesCreateComponent
   ],
   imports: [
     BrowserModule,
