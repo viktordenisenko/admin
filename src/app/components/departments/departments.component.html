@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row my-3">
+    <div class="col-8">
+      <h3>Departments List</h3>
+    </div>
+    <div class="col-4 text-right">
+      <button class="btn btn-outline-info mr-1" (click)="getDepartments()">
+        <i class="fa fa-refresh"></i>
+      </button>
+      <a class="btn btn-outline-info" routerLink="/departments/create">
+        <i class="fa fa-plus"></i> Add Department
+      </a>
+    </div>
+  </div>
+
+  <div class="row">
+      <div class="col-12">
+          <div class="table-responsive">
+              <table class="table table-bordered table-striped">
+                  <thead>
+                      <tr>
+                          <th scope="col">Id</th>
+                          <th scope="col">Name</th>
+                          <th scope="col">Latitude</th>
+                          <th scope="col">Longitude</th>
+                          <th scope="col">Tools</th>
+
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let dep of departments">
+                          <td>{{dep._id}}</td>
+                          <td>{{dep.name}}</td>
+                          <td>{{dep.latitude}}</td>
+                          <td>{{dep.longitude}}</td>
+                          <td class="text-nowrap">
+                            <a [routerLink]="'/departments/update/' + dep._id" class="btn btn-sm btn-outline-warning mr-1">
+                              <i class="fa fa-pencil"></i>
+                            </a>
+                            <button (click)="deleteDepartment(dep._id)" class="btn btn-sm btn-outline-danger">
+                              <i class="fa fa-remove"></i>
+                            </button>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+
+      </div>
+  </div>
+</div>

@@ -20,7 +20,7 @@ export class CategoriesCreateComponent implements OnInit {
 
   }
   public saveCategory() {
-    this.http.post(environment.apiUrl + '/category', this.category).subscribe(response => {
+    this.http.post(environment.apiUrl + '/categories', this.category).subscribe(response => {
       this.router.navigate(['/categories']);
     });
   }

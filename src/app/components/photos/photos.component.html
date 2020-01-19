@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row my-3">
+    <div class="col-8">
+      <h3>Photos List</h3>
+    </div>
+    <div class="col-4 text-right">
+      <button class="btn btn-outline-info mr-1" (click)="getPhotos()">
+        <i class="fa fa-refresh"></i>
+      </button>
+      <a [routerLink]="'/photos/create'" class="btn btn-outline-info ">
+        <i class="fa fa-plus"></i> Add Photo
+      </a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+          <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Image</th>
+            <th scope="col">Url</th>
+            <th scope="col">Sort</th>
+            <th scope="col">Tools</th>
+
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let ph of photos">
+            <td>{{ph._id}}</td>
+            <td><img style="height:40px;" [src]="ph.url" alt="image"></td>
+            <td class="text-break">{{ph.url}}</td>
+            <td>{{ph.sort}}</td>
+            <td class="text-nowrap">
+
+              <a [routerLink]="'/photos/update/' + ph._id" class="btn btn-sm btn-outline-warning mr-1">
+                <i class="fa fa-pencil"></i>
+              </a>
+              <button (click)="deletePhoto(ph._id)" class="btn btn-sm btn-outline-danger">
+                <i class="fa fa-remove"></i>
+              </button>
+
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>
+

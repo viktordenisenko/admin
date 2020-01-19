@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row my-3">
+        <div class="col-12">
+          <h3>Add New photo</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+          <div class="form-group">
+            <label for="photo_url">Photo Url</label>
+            <textarea [(ngModel)]="photo.url" class="form-control" id="photo_url"></textarea>
+          </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+              <label for="photo_sort">Photo Sort by</label>
+              <input [(ngModel)]="photo.sort" type="text" class="form-control" id="photo_sort">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <button (click)="savePhoto()" type="submit" class="btn btn-outline-info">Save photo</button>
+        </div>
+    </div>
+</div>

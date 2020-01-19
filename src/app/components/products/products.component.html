@@ -1,13 +1,13 @@
 <div class="container">
     <div class="row my-3">
         <div class="col-8">
-            <h1>Products List</h1>
+            <h3>Products List</h3>
         </div>
         <div class="col-4 text-right">
-            <button class="btn btn-info" (click)="getProducts()">
+            <button class="btn btn-outline-info mr-1" (click)="getProducts()">
                 <i class="fa fa-refresh"></i>
             </button>
-            <a class="btn btn-primary" routerLink="/products/create">
+            <a class="btn btn-outline-info" routerLink="/products/create">
                 <i class="fa fa-plus"></i> Create Product
             </a>
         </div>
@@ -39,10 +39,10 @@
                             <td>{{ p.price }}</td>
                             <td>{{ p.category }}</td>
                             <td class="text-nowrap">
-                                <a [routerLink]="'/products/update/' + p._id" class="btn btn-sm btn-warning mr-1">
+                                <a [routerLink]="'/products/update/' + p._id" class="btn btn-sm btn-outline-warning mr-1">
                                     <i class="fa fa-pencil"></i>
                                 </a>
-                                <button (click)="deleteProduct(p._id)" class="btn btn-sm btn-danger">
+                                <button (click)="deleteProduct(p._id)" class="btn btn-sm btn-outline-danger">
                                     <i class="fa fa-remove"></i>
                                 </button>
                             </td>

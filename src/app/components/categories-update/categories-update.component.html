@@ -1,13 +1,17 @@
 <div class="container">
-    <div class="row">
+    <div class="row my-3">
         <div class="col-12">
-            <h1>Category Update</h1>
+            <h3>Category Update</h3>
         </div>
     </div>
   <div class="row">
-    <div class="form-group">
-      <label for="product_title">Product title</label>
-      <input [(ngModel)]="category.title" type="text" class="form-control" id="product_title"/>
+    <div class="col-6">
+      <div class="form-group">
+        <label for="category_title">Category title</label>
+        <input [(ngModel)]="category.title" type="text" class="form-control" id="category_title"/>
+      </div>
+      <button type="submit" class="btn btn-outline-info" (click)="updateCategory()">Update category</button>
     </div>
+
   </div>
 </div>

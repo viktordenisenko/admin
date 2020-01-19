@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row my-3">
+    <div class="col-12">
+      <h3>Update user</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <div class="form-group">
+        <label for="first_name">FirstName</label>
+        <input [(ngModel)]="user.firstName" type="text"  class="form-control" id="first_name"/>
+      </div>
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <div class="form-group">
+        <label for="last_name">LastName</label>
+        <input [(ngModel)]="user.lastName" type="text"  class="form-control" id="last_name"/>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <div class="form-group">
+        <label for="user_email">Email</label>
+        <input [(ngModel)]="user.email" type="text" class="form-control" id="user_email"/>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <button (click)="saveUser()" type="submit" class="btn btn-outline-info">Save user</button>
+    </div>
+  </div>
+
+</div>

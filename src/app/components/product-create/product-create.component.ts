@@ -25,14 +25,14 @@ export class ProductCreateComponent implements OnInit {
   }
 
   public saveProduct() {
-    this.http.post(environment.apiUrl + "/products", this.product)
+    this.http.post(environment.apiUrl + '/products', this.product)
     .subscribe(response => {
-      this.router.navigate(["/products"]);
+      this.router.navigate(['/products']);
     });
   }
 
   public getCategories() {
-    this.http.get<ICategory[]>(environment.apiUrl + "/category")
+    this.http.get<ICategory[]>(environment.apiUrl + '/categories')
     .subscribe(response => {
       this.categories = response;
     });

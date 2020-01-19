@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row my-3">
+      <div class="col-12">
+          <h3>Add New Department</h3>
+      </div>
+  </div>
+      <div class="row">
+          <div class="col-6">
+              <div class="form-group">
+                  <label for="department_name">Department Name</label>
+                  <input [(ngModel)]="departments.name" type="text"  class="form-control" id="department_name"/>
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-3">
+              <div class="form-group">
+                  <label for="department_latitude">Department latitude</label>
+                  <input [(ngModel)]="departments.latitude" type="text" class="form-control" id ="department_latitude"/>
+              </div>
+          </div>
+          <div class="col-3">
+              <div class="form-group">
+                <label for="department_longitude">Department longitude</label>
+                <input [(ngModel)]="departments.longitude" type="text" class="form-control" id ="department_longitude"/>
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-6">
+              <button (click)="saveDepartment()" type="submit" class="btn btn-outline-info">Save department</button>
+          </div>
+      </div>
+</div>
