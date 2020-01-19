@@ -19,6 +19,7 @@
         <table class="table table-bordered table-striped">
           <thead>
           <tr>
+            <th scope="col">#</th>
             <th scope="col">Id</th>
             <th scope="col">Image</th>
             <th scope="col">Url</th>
@@ -28,7 +29,8 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let ph of photos">
+          <tr *ngFor="let ph of photos; let i = index">
+            <td>{{ i + 1}}</td>
             <td>{{ph._id}}</td>
             <td><img style="height:40px;" [src]="ph.url" alt="image"></td>
             <td class="text-break">{{ph.url}}</td>

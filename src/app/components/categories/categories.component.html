@@ -20,13 +20,15 @@
           <table class="table table-stripped table-bordered">
             <thead>
             <tr>
+              <th>#</th>
               <th>id</th>
               <th>title</th>
               <th>tools</th>
             </tr>
             </thead>
               <tbody>
-          <tr *ngFor="let cat of categories">
+          <tr *ngFor="let cat of categories; let i = index">
+              <td>{{ i + 1 }}</td>
               <td>{{cat._id}}</td>
               <td>{{cat.title}}</td>
             <td class="text-nowrap">
