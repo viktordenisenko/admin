@@ -24,6 +24,7 @@ import { UsersUpdateComponent } from './components/users-update/users-update.com
 import { PhotosComponent } from './components/photos/photos.component';
 import { PhotosCreateComponent } from './components/photos-create/photos-create.component';
 import { PhotosUpdateComponent } from './components/photos-update/photos-update.component';
+import { EditorModule } from '@tinymce/tinymce-angular';
 
 const routes = [
   {
@@ -144,7 +145,8 @@ const routes = [
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    EditorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
