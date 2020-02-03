@@ -9,7 +9,7 @@ import { ProductsComponent } from './components/products/products.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { ProductCreateComponent } from './components/product-create/product-create.component';
 import { ProductUpdateComponent } from './components/product-update/product-update.component';
 import { CategoriesComponent } from './components/categories/categories.component';
@@ -25,97 +25,116 @@ import { PhotosComponent } from './components/photos/photos.component';
 import { PhotosCreateComponent } from './components/photos-create/photos-create.component';
 import { PhotosUpdateComponent } from './components/photos-update/photos-update.component';
 import { EditorModule } from '@tinymce/tinymce-angular';
+import { LoginComponent } from './components/login/login.component';
+import { AdminLayoutComponent } from './components/admin-layout/admin-layout.component';
+import {NgxWebstorageModule} from 'ngx-webstorage';
+import {AuthInterceptor} from './interceptors/auth.interceptor';
+import {AuthGuard} from './guards/auth.guard';
+
 
 const routes = [
   {
     path: '',
-    component: DashboardComponent
-  },
-  {
-    path: 'products',
+    component: AdminLayoutComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
-        component: ProductsComponent
+        component: DashboardComponent
+      },
+
+      {
+        path: 'products',
+        children: [
+          {
+            path: '',
+            component: ProductsComponent
+          },
+          {
+            path: 'create',
+            component: ProductCreateComponent
+          },
+          {
+            path: 'update/:productId',
+            component: ProductUpdateComponent
+          }
+        ]
       },
       {
-        path: 'create',
-        component: ProductCreateComponent
+        path: 'categories',
+        children: [
+          {
+            path: '',
+            component: CategoriesComponent
+          },
+          {
+            path: 'create',
+            component: CategoriesCreateComponent
+          },
+          {
+            path: 'update/:categoryId',
+            component: CategoriesUpdateComponent
+          }
+        ]
       },
       {
-        path: 'update/:productId',
-        component: ProductUpdateComponent
+        path: 'departments',
+        children: [
+          {
+            path: '',
+            component: DepartmentsComponent
+          },
+          {
+            path: 'create',
+            component: DepartmentsCreateComponent
+          },
+          {
+            path: 'update/:departmentId',
+            component: DepartmentsUpdateComponent
+          }
+        ]
+      },
+      {
+        path: 'users',
+        children: [
+          {
+            path: '',
+            component: UsersComponent
+          },
+          {
+            path: 'create',
+            component: UsersCreateComponent
+          },
+          {
+            path: 'update/:userId',
+            component: UsersUpdateComponent
+          }
+        ]
+      },
+      {
+        path: 'photos',
+        children: [
+          {
+            path: '',
+            component: PhotosComponent
+          },
+          {
+            path: 'create',
+            component: PhotosCreateComponent
+          },
+          {
+            path: 'update/:photoId',
+            component: PhotosUpdateComponent
+          }
+        ]
       }
     ]
   },
   {
-    path: 'categories',
-    children: [
-      {
-        path: '',
-        component: CategoriesComponent
-      },
-      {
-        path: 'create',
-        component: CategoriesCreateComponent
-      },
-      {
-        path: 'update/:categoryId',
-        component: CategoriesUpdateComponent
-      }
-    ]
-  },
-  {
-    path: 'departments',
-    children: [
-      {
-        path: '',
-        component: DepartmentsComponent
-      },
-      {
-        path: 'create',
-        component: DepartmentsCreateComponent
-      },
-      {
-        path: 'update/:departmentId',
-        component: DepartmentsUpdateComponent
-      }
-    ]
-  },
-  {
-    path: 'users',
-    children: [
-      {
-        path: '',
-        component: UsersComponent
-      },
-      {
-        path: 'create',
-        component: UsersCreateComponent
-      },
-      {
-        path: 'update/:userId',
-        component: UsersUpdateComponent
-      }
-    ]
-  },
-  {
-    path: 'photos',
-    children: [
-      {
-        path: '',
-        component: PhotosComponent
-      },
-      {
-        path: 'create',
-        component: PhotosCreateComponent
-      },
-      {
-        path: 'update/:photoId',
-        component: PhotosUpdateComponent
-      }
-    ]
+    path: 'login',
+    component: LoginComponent
   }
+
 ];
 
 @NgModule({
@@ -137,7 +156,9 @@ const routes = [
     UsersUpdateComponent,
     PhotosComponent,
     PhotosCreateComponent,
-    PhotosUpdateComponent
+    PhotosUpdateComponent,
+    LoginComponent,
+    AdminLayoutComponent
   ],
   imports: [
     BrowserModule,
@@ -146,9 +167,16 @@ const routes = [
     HttpClientModule,
     RouterModule.forRoot(routes),
     NgbModule.forRoot(),
-    EditorModule
+    EditorModule,
+    NgxWebstorageModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

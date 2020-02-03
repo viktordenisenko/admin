@@ -25,6 +25,8 @@
           <a class="nav-link" routerLink="/photos">Photos</a>
         </li>
       </ul>
-
+      <span class="text-white mr-3"><b>Hello</b> {{ user?.firstName}}</span>
+        <button (click)="logout()" class="btn btn-light">Logout</button>
     </div>
+
   </nav>

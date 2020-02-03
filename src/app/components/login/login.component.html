@@ -1,0 +1,30 @@
+<div class="container mt-5">
+    <div class="row mt-5">
+        <div class="col-4 offset-4 mt-5">
+            <div class="box">
+              <div class="form-group">
+                <label for="email">Email:</label>
+                <input (keydown.enter)="login()" [(ngModel)]="loginData.email" class="form-control" type="email" id="email"/>
+              </div>
+              <div class="form-group">
+                <label for="password">Password:</label>
+                <input  (keydown.enter)="login()" [(ngModel)]="loginData.password" class="form-control" type="password" id="password"/>
+              </div>
+
+              <div *ngIf="errorMessage" class="alert alert-danger">
+                {{ errorMessage}}
+              </div>
+
+              <div *ngIf="validationErrors.length" class="alert alert-warning">
+                <ul>
+                    <li *ngFor="let error of validationErrors">
+                      {{ error.msg}}
+                    </li>
+                </ul>
+              </div>
+              <button (click)="login()" class="btn btn-outline-success btn-block">Login</button>
+            </div>
+
+        </div>
+    </div>
+</div>
