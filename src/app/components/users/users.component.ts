@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {IUser} from '../../interfaces/IUser';
+import {IResponce} from '../../interfaces/IResponce';
 
 @Component({
   selector: 'app-users',
@@ -18,8 +19,8 @@ export class UsersComponent implements OnInit {
   }
 
   public getUsers() {
-    this.http.get<IUser[]>(environment.apiUrl + '/users').subscribe(res => {
-      this.users = res;
+    this.http.get<IResponce>(environment.apiUrl + '/users').subscribe(res => {
+      this.users = res.users;
     });
   }
   public deleteUser(id) {

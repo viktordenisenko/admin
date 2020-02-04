@@ -24,6 +24,7 @@
             <th scope="col">FirstName</th>
             <th scope="col">LastName</th>
             <th scope="col">Email</th>
+            <th scope="col">Role</th>
             <th scope="col">Tools</th>
 
           </tr>
@@ -35,6 +36,7 @@
             <td>{{user.firstName}}</td>
             <td>{{user.lastName}}</td>
             <td>{{user.email}}</td>
+            <td>{{user.role}}</td>
             <td class="text-nowrap">
               <a [routerLink]="'/users/update/' + user._id" class="btn btn-sm btn-outline-warning mr-1">
                 <i class="fa fa-pencil"></i>

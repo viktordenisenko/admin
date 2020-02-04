@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {ActivatedRoute, Router} from '@angular/router';
 import {environment} from '../../../environments/environment';
 import {IUser} from '../../interfaces/IUser';
+import {IResponce} from '../../interfaces/IResponce';
 
 @Component({
   selector: 'app-users-update',
@@ -29,14 +30,14 @@ export class UsersUpdateComponent implements OnInit {
   }
 
   public initUser(id) {
-    this.http.get(environment.apiUrl + '/users/' + id).subscribe( res => {
-      this.user = res;
+    this.http.get<IResponce>(environment.apiUrl + '/users/' + id).subscribe( res => {
+      this.user = res.user;
     });
   }
 
   public getUsers() {
-    this.http.get<IUser[]>(environment.apiUrl + '/users').subscribe( res => {
-      this.users = res;
+    this.http.get<IResponce>(environment.apiUrl + '/users').subscribe( res => {
+      this.users = res.users;
     });
   }
   public saveUser() {

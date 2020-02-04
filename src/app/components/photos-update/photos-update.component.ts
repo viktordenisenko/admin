@@ -3,6 +3,7 @@ import {IPhoto} from '../../interfaces/IPhoto';
 import {HttpClient} from '@angular/common/http';
 import {ActivatedRoute, Router} from '@angular/router';
 import {environment} from '../../../environments/environment';
+import {IResponce} from '../../interfaces/IResponce';
 
 @Component({
   selector: 'app-photos-update',
@@ -28,14 +29,14 @@ export class PhotosUpdateComponent implements OnInit {
   }
 
   public initPhoto(id) {
-    this.http.get(environment.apiUrl + '/photos/' + id).subscribe( res => {
-      this.photo = res;
+    this.http.get<IResponce>(environment.apiUrl + '/photos/' + id).subscribe( res => {
+      this.photo = res.photo;
     });
   }
 
   public getPhotos() {
-    this.http.get<IPhoto[]>(environment.apiUrl + '/photos').subscribe(res => {
-      this.photos = res;
+    this.http.get<IResponce>(environment.apiUrl + '/photos').subscribe(res => {
+      this.photos = res.photos;
     });
   }
 

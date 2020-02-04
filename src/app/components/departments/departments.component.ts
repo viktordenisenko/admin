@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {IDepartment} from '../../interfaces/IDepartment';
+import {IResponce} from '../../interfaces/IResponce';
 
 @Component({
   selector: 'app-departments',
@@ -18,8 +19,8 @@ export class DepartmentsComponent implements OnInit {
   }
 
   public getDepartments() {
-    this.http.get<IDepartment[]>(environment.apiUrl + '/departments').subscribe(res => {
-      this.departments = res;
+    this.http.get<IResponce>(environment.apiUrl + '/departments').subscribe(res => {
+      this.departments = res.departments;
     });
   }
 

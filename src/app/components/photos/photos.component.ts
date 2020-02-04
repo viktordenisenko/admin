@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {IPhoto} from '../../interfaces/IPhoto';
+import {IResponce} from '../../interfaces/IResponce';
 
 @Component({
   selector: 'app-photos',
@@ -16,9 +17,9 @@ export class PhotosComponent implements OnInit {
     this.getPhotos();
   }
 
-  public getPhotos(){
-    this.http.get<IPhoto[]>(environment.apiUrl + '/photos').subscribe( res => {
-      this.photos = res;
+  public getPhotos() {
+    this.http.get<IResponce>(environment.apiUrl + '/photos').subscribe( res => {
+      this.photos = res.photos;
     });
   }
   public deletePhoto(id) {

@@ -3,6 +3,7 @@ import {ICategory} from '../../interfaces/ICategory';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {ActivatedRoute, Router} from '@angular/router';
+import {IResponce} from '../../interfaces/IResponce';
 
 @Component({
   selector: 'app-categories-update',
@@ -25,8 +26,8 @@ export class CategoriesUpdateComponent implements OnInit {
 
   }
   public initCategory(id) {
-    this.http.get<ICategory>(environment.apiUrl + '/categories/' + id).subscribe(response => {
-      this.category = response;
+    this.http.get<IResponce>(environment.apiUrl + '/categories/' + id).subscribe(response => {
+      this.category = response.category;
       console.log(this.category);
     });
   }

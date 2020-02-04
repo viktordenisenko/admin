@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { ICategory } from 'src/app/interfaces/ICategory';
+import {IResponce} from '../../interfaces/IResponce';
 
 @Component({
   selector: 'app-product-create',
@@ -32,9 +33,9 @@ export class ProductCreateComponent implements OnInit {
   }
 
   public getCategories() {
-    this.http.get<ICategory[]>(environment.apiUrl + '/categories')
+    this.http.get<IResponce>(environment.apiUrl + '/categories')
     .subscribe(response => {
-      this.categories = response;
+      this.categories = response.categories;
     });
   }
 

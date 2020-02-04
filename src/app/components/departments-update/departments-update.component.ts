@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {IDepartment} from '../../interfaces/IDepartment';
 import {ActivatedRoute, Router} from '@angular/router';
+import {IResponce} from '../../interfaces/IResponce';
 
 @Component({
   selector: 'app-departments-update',
@@ -27,16 +28,14 @@ export class DepartmentsUpdateComponent implements OnInit {
   }
 
   public initDepartment(id) {
-    this.http.get(environment.apiUrl + '/departments/' + id).subscribe( response => {
-      this.department = response;
-      console.log(this.department);
+    this.http.get<IResponce>(environment.apiUrl + '/departments/' + id).subscribe( response => {
+      this.department = response.department;
     });
   }
 
   public getDepartments() {
-    this.http.get<IDepartment[]>(environment.apiUrl + '/departments').subscribe( res => {
-      this.departments = res;
-      console.log(this.departments);
+    this.http.get<IResponce>(environment.apiUrl + '/departments').subscribe( res => {
+      this.departments = res.departments;
     });
   }
 

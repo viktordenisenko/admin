@@ -44,9 +44,9 @@ export class ProductUpdateComponent implements OnInit {
   }
 
   public getCategories() {
-    this.http.get<ICategory[]>(environment.apiUrl + '/categories')
+    this.http.get<IResponce>(environment.apiUrl + '/categories')
     .subscribe(response => {
-      this.categories = response;
+      this.categories = response.categories;
     });
   }
 

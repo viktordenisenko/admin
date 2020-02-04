@@ -30,6 +30,22 @@
         </div>
     </div>
     <div class="row">
+          <div class="col-6">
+              <div class="form-group">
+                <label for="user_password">Password</label>
+                <input [(ngModel)]="user.password" type="text" class="form-control" id="user_password"/>
+              </div>
+          </div>
+      </div>
+    <div class="row">
+          <div class="col-6">
+              <div class="form-group">
+                <label for="user_role">Role</label>
+                <input [(ngModel)]="user.role" type="text" class="form-control" id="user_role"/>
+              </div>
+          </div>
+      </div>
+    <div class="row">
       <div class="col-6">
         <button (click)="saveUser()" type="submit" class="btn btn-outline-info">Save user</button>
       </div>
