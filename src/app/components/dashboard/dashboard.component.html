@@ -1,1 +1,14 @@
-<p>dashboard works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12 float-right">
+      <button (click)="getStats()" class="btn btn-sm btn-outline-info">Refresh</button>
+    </div>
+      <div class="col-6">
+          <chart
+            [type]="type"
+            [data]="data"
+            [options]="options">
+          </chart>
+      </div>
+  </div>
+</div>
