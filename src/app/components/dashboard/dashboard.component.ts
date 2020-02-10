@@ -25,7 +25,7 @@ export class DashboardComponent implements OnInit {
 
   public getStats() {
     this.http.get<IResponce>(environment.apiUrl + '/stats').subscribe(response => {
-      if (response.success){
+      if (response.success) {
         this.data = response.data;
       }
     });
